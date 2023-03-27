@@ -1,0 +1,30 @@
+ORG 0
+
+MOV R0, #5
+MOV R1, #4
+MOV R2, #3
+MOV R3, #2
+MOV R4, #1
+MOV R5, #0
+MOV R6, #6
+MOV R7, #7
+
+MOV A, R0
+MOV B, R5
+
+MOV R0, B
+MOV R5, A
+
+MOV A, R1
+MOV B, R4
+
+MOV R1, B
+MOV R4, A
+
+MOV A, R2
+MOV B, R3
+
+MOV R2, B
+MOV R3, A
+
+END
