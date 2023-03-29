@@ -1,0 +1,23 @@
+ORG 0
+
+;1.) F = X + Y - 2Z
+
+MOV R0, #3 ; X
+MOV R1, #2 ; Y
+MOV R2, #1 ; Z
+
+; X + Y
+MOV A, R0
+ADD A, R1
+MOV R3, A ; X + Y RESULT
+
+;3Z
+MOV A, R2
+MOV B, #3
+MUL AB  ; 3Z RESULT
+MOV R4, A
+
+MOV A, R3
+SUBB A, R4
+MOV R7, A
+END

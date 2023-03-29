@@ -1,0 +1,178 @@
+ORG 0H
+;R7 = Xh 
+;R6 = Xl
+;R5 = Yl
+;R4 = F1
+;R3 = Zh
+;R2 = Zl
+;R1 = f1f2
+;R0 = f2f3
+
+
+MOV 10H, #21H ; X
+MOV 20H, #35H ; Y
+MOV 30H, #0A7H ; Z
+MOV A, 10H
+
+; get Xh
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+MOV R7, A
+CLR A 
+
+; get XL 
+MOV A, 10H
+RLC A
+CLR C
+RLC A
+CLR C
+RLC A
+CLR C 
+RLC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+MOV R6, A
+CLR A 
+
+;get YL
+MOV A, 20H
+RLC A
+CLR C
+RLC A
+CLR C
+RLC A
+CLR C 
+RLC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+;R5 to YL
+MOV R5, A
+CLR A 
+
+MOV A, R5
+ORL A, R6
+
+;F1 to R4
+MOV R4, A
+
+; get Zh
+MOV A, 30H
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+MOV R3, A
+CLR A 
+
+; get ZL 
+MOV A, 30H
+RLC A
+CLR C
+RLC A
+CLR C
+RLC A
+CLR C 
+RLC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+MOV R2, A
+CLR A 
+
+;TO GET F2
+MOV A, R3
+CPL A ; complement of Zh
+
+ANL A, R6
+;F2 VALUE
+MOV 09H, A
+
+CLR A
+; YH
+; get Yh
+MOV A, 20H
+RRC A
+CLR C
+RRC A
+CLR C
+RRC A
+CLR C 
+RRC A
+
+MOV 08H, A
+CLR A 
+
+
+;get F3 
+MOV A, R2
+XRL A, 08H
+
+MOV 11H, A
+CLR A
+
+;get F1 HIGH
+MOV A, R4
+RLC A
+CLR C
+RLC A
+CLR C
+RLC A
+CLR C 
+RLC A
+
+;get F1F2
+ORL A, 09H
+
+MOV R0, A
+CLR A
+
+;get F2 HIGH
+MOV A, 09H
+RLC A
+CLR C
+RLC A
+CLR C
+RLC A
+CLR C 
+RLC A
+
+;get F2F3
+ORL A, 11H
+
+MOV R1, A
+CLR A
+
+
+
+END
+
