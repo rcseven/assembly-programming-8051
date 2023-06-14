@@ -1,0 +1,18 @@
+ORG 0
+
+MOV A, #1 ; INPUT
+MOV B, #2 ; DIVISOR
+
+DIV AB
+MOV A, B
+JZ EVEN
+
+ODD:
+	MOV A, #00H
+	JMP END
+
+EVEN:
+	MOV A, #0FFH
+
+END:
+	END
